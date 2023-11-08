@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:39:45 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/08 15:11:35 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:34:47 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*str;
+	int	*str;
 	size_t	i;
 
 	str = malloc(nmemb * size);
@@ -31,5 +31,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 int	main()
 {
-	printf("%s\n", ft_calloc(3, sizeof(int)));
+	printf("%d\n", ft_calloc(3, sizeof(int)));
+	printf("%d\n", calloc(3, sizeof(int)));
 }
