@@ -6,11 +6,12 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:06:29 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/07 13:52:15 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:31:52 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+// #include <bsd/string.h>
 
 size_t  ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -35,4 +36,5 @@ int main()
     char    dst[] = "un ";
     const char  src[] = "deux";
     printf("%d\n", ft_strlcat(dst, src, 8));
+	// printf("%d\n", strlcat(dst, src, 8));
 }

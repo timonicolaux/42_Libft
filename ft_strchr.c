@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:11:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/08 09:10:50 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:44:27 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ char    *ft_strchr(const char *s, int c)
         return (0);
 }
 
-int main()
-{
-    const char  str[] = "saucisse";
-    int c = 'i';
-    printf("%s\n", ft_strchr(str, c));
-    printf("%s\n", strchr(str, c));
-}
+// int main()
+// {
+//     const char  str[] = "saucisse";
+//     int c = 'i';
+//     printf("%s\n", ft_strchr(str, c));
+//     printf("%s\n", strchr(str, c));
+// }
