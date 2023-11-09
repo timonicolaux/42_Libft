@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timonicolaux <timonicolaux@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/09 14:11:20 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:01:58 by timonicolau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int	calculate_total_size(char const *s, char c)
 		i++;
 	}
 	//dans le cas ou aucun separateur ou dernier mot
-	if (s[i] != c)
+	if (s[i - 1] != c)
 		count++;
-	printf("count : %d\n",count);
 	return (count);
 }
 
@@ -45,17 +44,21 @@ int	calculate_individual_size(char const *s, size_t i, char c)
 	return (count);
 }
 
-void	fill_values(char *individual_str, const char *s, size_t end_index, size_t length)
+void	fill_values(char *individual_str, const char *s, size_t end_index, size_t length, char c)
 {
 	size_t	start_index;
 	size_t	i;
 
 	start_index = end_index - length;
+	if (length == 0)
+		return;
 	i = 0;
 	if (s[end_index + 1] == '\0')
 		end_index++;
 	while (start_index < end_index)
 	{
+		if (s[start_index] == c)
+			break;
 		individual_str[i] = s[start_index];
 		start_index++;
 		i++;
@@ -66,6 +69,7 @@ char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
+	size_t	individual_size;
 	char	**array;
 
 	i = 0;
@@ -73,15 +77,16 @@ char	**ft_split(char const *s, char c)
 	array = malloc(sizeof(char *) * (calculate_total_size(s, c) + 1));
 	if (!array)
 		return (NULL);
-	array[(calculate_total_size(s, c) + 1)] == NULL;
+	array[(calculate_total_size(s, c) + 1)] = NULL;
 	while (s[i])
 	{
-		if (s[i] == c || s[i + 1] == '\0')
+		individual_size = calculate_individual_size(s, (i - 1), c);
+		if ((s[i] == c || s[i + 1] == '\0') && individual_size != 0)
 		{
-			array[j] = malloc(sizeof(char) * (calculate_individual_size(s, (i - 1), c) + 1));
+			array[j] = malloc(sizeof(char) * (individual_size + 1));
 			if (!array[j])
 				return (NULL);
-			fill_values(array[j], s, i, calculate_individual_size(s, (i - 1), c));
+			fill_values(array[j], s, i, individual_size, c);
 			j++;
 		}
 		i++;
@@ -92,7 +97,7 @@ char	**ft_split(char const *s, char c)
 int	main()
 {
 	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
-	char	str[] = "**decouper*cette*phrase";
+	char	str[] = "**decouper**cette*phrase**";
 	char	c = '*';
 	char	**result;
 	size_t	i;
