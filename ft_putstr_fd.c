@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 09:05:02 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 10:24:40 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/10 09:56:09 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/10 10:00:39 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <strings.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*str;
-	size_t	i;
+	int	i;
 
-	str = (char *)s;
 	i = 0;
-	while (i < n)
+	while (s[i])
 	{
-		str[i] = '\0';
+		write(fd, &s[i], 1);
 		i++;
 	}
 }
-
-// int main()
-// {
-//     char    str[] = "Coucou tout le monde";
-//     size_t  size = 3;
-//     ft_bzero(str, size);
-//     printf("%s\n", str);
-//     bzero(str, size);
-//     printf("ici %s\n", str);
-// }

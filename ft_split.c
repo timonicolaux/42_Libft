@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timonicolaux <timonicolaux@student.42.f    +#+  +:+       +#+        */
+/*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/09 18:01:58 by timonicolau      ###   ########.fr       */
+/*   Updated: 2023/11/10 11:12:48 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	calculate_total_size(char const *s, char c)
 			count++;
 		i++;
 	}
-	//dans le cas ou aucun separateur ou dernier mot
 	if (s[i - 1] != c)
 		count++;
 	return (count);
@@ -44,21 +43,24 @@ int	calculate_individual_size(char const *s, size_t i, char c)
 	return (count);
 }
 
-void	fill_values(char *individual_str, const char *s, size_t end_index, size_t length, char c)
+void	fill_values(char *individual_str, const char *s,
+size_t end_index, char c)
 {
 	size_t	start_index;
 	size_t	i;
+	size_t	length;
 
+	length = calculate_individual_size(s, (end_index - 1), c);
 	start_index = end_index - length;
 	if (length == 0)
-		return;
+		return ;
 	i = 0;
 	if (s[end_index + 1] == '\0')
 		end_index++;
 	while (start_index < end_index)
 	{
 		if (s[start_index] == c)
-			break;
+			break ;
 		individual_str[i] = s[start_index];
 		start_index++;
 		i++;
@@ -86,7 +88,7 @@ char	**ft_split(char const *s, char c)
 			array[j] = malloc(sizeof(char) * (individual_size + 1));
 			if (!array[j])
 				return (NULL);
-			fill_values(array[j], s, i, individual_size, c);
+			fill_values(array[j], s, i, c);
 			j++;
 		}
 		i++;
@@ -94,19 +96,19 @@ char	**ft_split(char const *s, char c)
 	return (array);
 }
 
-int	main()
-{
-	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
-	char	str[] = "**decouper**cette*phrase**";
-	char	c = '*';
-	char	**result;
-	size_t	i;
+// int	main()
+// {
+// 	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
+// 	char	str[] = "**decouper**cette*phrase**";
+// 	char	c = '*';
+// 	char	**result;
+// 	size_t	i;
 
-	i = 0;
-	result = ft_split(str, c);
-	while (result[i])
-	{
-		printf("%s\n", result[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	result = ft_split(str, c);
+// 	while (result[i])
+// 	{
+// 		printf("%s\n", result[i]);
+// 		i++;
+// 	}
+// }

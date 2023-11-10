@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 09:05:02 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 10:24:40 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/10 10:05:16 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/10 10:11:31 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <strings.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
-	size_t	i;
-
-	str = (char *)s;
-	i = 0;
-	while (i < n)
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
 	{
-		str[i] = '\0';
-		i++;
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n *= -1;
+		}
+		if (n >= 10)
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+		else
+			ft_putchar_fd(n + '0', fd);
 	}
 }
-
-// int main()
-// {
-//     char    str[] = "Coucou tout le monde";
-//     size_t  size = 3;
-//     ft_bzero(str, size);
-//     printf("%s\n", str);
-//     bzero(str, size);
-//     printf("ici %s\n", str);
-// }

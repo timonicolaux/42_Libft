@@ -6,19 +6,21 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:09:34 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/07 14:09:58 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:19:56 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-    c += 32;
-    return (c);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	else
+		return (c);
 }
 
-int main()
-{
-    printf("%d\n", ft_tolower('a'));
-}
+// int main()
+// {
+//     printf("%d\n", ft_tolower('a'));
+// }

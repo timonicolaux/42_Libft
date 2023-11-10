@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:56:01 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/09 10:09:57 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:41:29 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		}
 		i++;
 	}
+	result[j] = '\0';
 	return (result);
 }
 

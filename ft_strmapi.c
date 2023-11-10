@@ -1,51 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 16:29:27 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 14:12:08 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/10 08:36:32 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/10 15:53:56 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
-	size_t	s1_size;
-	size_t	s2_size;
+	char			*str;
+	size_t			length;
+	unsigned int	i;
 
 	i = 0;
-	j = 0;
-	s1_size = ft_strlen(s1);
-	s2_size = ft_strlen(s2);
-	str = malloc(sizeof(char) * (s1_size + s2_size + 1));
+	length = ft_strlen(s);
+	str = malloc(sizeof(char) * (length + 1));
 	if (!str)
 		return (NULL);
-	while (s1[i])
+	while (str[i])
 	{
-		str[i] = s1[i];
+		str[i] = (*f)(i, s[i]);
 		i++;
 	}
-	while (s2[j])
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[i] = '\0';
 	return (str);
 }
 
+// char	add_one(unsigned int i, char c)
+// {
+// 	char	c2;
+
+// 	i = 1;
+// 	c2 = c + i;
+// 	printf("%c\n", c2);
+// 	return (c);
+// }
+
 // int	main()
 // {
-// 	char	s1[] = "un";
-// 	char	s2[] = " deux";
+// 	char	str[] = "abcd";
 
-// 	printf("%s\n", ft_strjoin(s1, s2));
+// 	printf("%s\n", ft_strmapi(str, *add_one));
 // }

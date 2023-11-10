@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:21:24 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/08 13:37:10 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:15:07 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	ft_atoi(const char *nptr)
 	return (result * sign);
 }
 
-int	main()
-{
-	const char	str[] = "	  -1245";
-	printf("%d\n", ft_atoi(str));
-}
+// int	main()
+// {
+// 	const char	str[] = "	  -1245";
+// 	printf("%d\n", ft_atoi(str));
+// }

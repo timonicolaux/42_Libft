@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:48:39 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/08 15:36:02 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:15:23 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strdup(const char *s)
 	return (str);
 }
 
-int	main()
-{
-	printf("%s\n", ft_strdup("bonjour"));
-}
+// int	main()
+// {
+// 	printf("%s\n", ft_strdup("bonjour"));
+// }
