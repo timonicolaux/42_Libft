@@ -6,13 +6,13 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:14:51 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 15:45:36 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:24:12 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	nbr_len(int n)
+int	ft_nbr_len(int n)
 {
 	int	count;
 
@@ -34,13 +34,14 @@ int	nbr_len(int n)
 
 char	*ft_itoa(int n)
 {
-	size_t	sign;
-	size_t	length;
+	int		sign;
+	int		length;
 	char	*str;
 
+	sign = 0;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	length = nbr_len(n);
+	length = ft_nbr_len(n);
 	if (n < 0)
 	{
 		sign = 1;
@@ -50,11 +51,10 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	str[length] = '\0';
-	while (length)
+	while (length--)
 	{
-		str[length - 1] = (n % 10) + '0';
+		str[length] = (n % 10) + '0';
 		n /= 10;
-		length--;
 	}
 	if (sign == 1)
 		str[0] = '-';
@@ -63,7 +63,7 @@ char	*ft_itoa(int n)
 
 // int	main()
 // {
-// 	int	n = -21;
+// 	int	n = 1;
 
-// 	printf("%s\n", ft_itoa(n));
+// 	printf("%s\n", ft_itoa(0));
 // }

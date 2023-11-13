@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:18:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 14:06:35 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:54:33 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
-	char	*csrc;
-	char	*cdest;
+	unsigned char	*csrc;
+	unsigned char	*cdest;
 
 	i = 0;
-	csrc = (char *)src;
-	cdest = (char *)dest;
+	if (!src && !dest)
+		return (NULL);
+	csrc = (unsigned char *)src;
+	cdest = (unsigned char *)dest;
 	if (csrc < cdest)
 	{
 		while (i < n)
@@ -33,8 +35,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	{
 		while (n > 0)
 		{
-			cdest[i] = csrc[i];
-			i++;
+			cdest[n] = csrc[n];
+			n--;
 		}
 	}
 	return (cdest);
@@ -66,10 +68,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 // int main()
 // {
-//     char    src[] = "source";
-//     char    dest[] = "destination";
+//     const char    src[] = "thi\xffs i\xfas \0a g\xde\xadood \0nyan\0cat\0 !\r\n";
+//     char    dest[] = "";
 
-//     printf("Avant memcpy dest = %s\n", dest);
-//     ft_memcpy(dest, src, ft_strlen(src)+1);
-//     printf("Apres memcpy dest = %s\n", dest);
+//     printf("Avant memmove dest = %s\n", dest);
+//     ft_memmove(dest, src, 33);
+//     printf("Apres memmove dest = %s\n", dest);
 // }

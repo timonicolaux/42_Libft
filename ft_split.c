@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 11:12:48 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:54:24 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ char	**ft_split(char const *s, char c)
 // int	main()
 // {
 // 	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
-// 	char	str[] = "**decouper**cette*phrase**";
-// 	char	c = '*';
+// 	// char	str[] = "**decouper**cette*phrase**";
+// 	char	str[] = "      split       this for   me  !       ";
+// 	char	c = ' ';
 // 	char	**result;
 // 	size_t	i;
 

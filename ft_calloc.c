@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:39:45 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 10:24:49 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:33:19 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int		*str;
+	char	*str;
 	size_t	i;
 
 	str = malloc(nmemb * size);
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (i < nmemb)
+	while (i < (nmemb * size))
 	{
 		str[i] = 0;
 		i++;

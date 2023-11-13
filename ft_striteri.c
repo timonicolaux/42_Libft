@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:15:54 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 09:49:20 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:09:52 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
 	{
-		(*f)(i, s);
+		(*f)(i, s + i);
 		i++;
 	}
 }

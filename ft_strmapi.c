@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:36:32 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 15:53:56 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:27:34 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 
 	i = 0;
+	if (!s || !f)
+		return (NULL);
 	length = ft_strlen(s);
 	str = malloc(sizeof(char) * (length + 1));
 	if (!str)
 		return (NULL);
 	while (str[i])
 	{
-		str[i] = (*f)(i, s[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }
 
@@ -35,15 +38,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 // {
 // 	char	c2;
 
-// 	i = 1;
-// 	c2 = c + i;
-// 	printf("%c\n", c2);
-// 	return (c);
+// 	c2 = 'a';
+// 	return (c2);
 // }
 
 // int	main()
 // {
 // 	char	str[] = "abcd";
 
-// 	printf("%s\n", ft_strmapi(str, *add_one));
+// 	printf("%s\n", ft_strmapi(str, add_one));
 // }

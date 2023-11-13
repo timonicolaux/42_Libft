@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:56:01 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 13:41:29 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:49:04 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size = 0;
 	i = 0;
 	j = 0;
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
 	size = remove_size(s1, set);
 	result = malloc(sizeof(char) * (size + 1));
 	if (!result)
@@ -71,8 +75,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 // int	main()
 // {
-// 	char	str1[] = "banyyanua";
-// 	char	str2[] = "yu";
+// 	char	str1[] = "banyyanua test";
+// 	char	str2[] = "";
 
 // 	printf("%s\n", ft_strtrim(str1, str2));
 // }

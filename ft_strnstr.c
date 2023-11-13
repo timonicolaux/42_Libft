@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:10:52 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/10 13:45:04 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:44:25 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	j = 0;
 	length = ft_strlen(little);
+	if (!big && !little)
+		return (NULL);
 	if (length == 0)
 		return ((char *)big);
 	while (big[i] && i < len)
 	{
 		while (little[j] == big[i + j] && (i + j) < len)
 		{
-			if (j == (ft_strlen(little) - 1))
-				return ((char *)&little[0]);
+			if (little[j + 1] == '\0')
+				return ((char *)(big + i));
 			j++;
 		}
 		j = 0;
@@ -39,9 +41,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 // int	main()
 // {
-// 	const char big[] = "une longue phrase";
-// 	const char little[] = "une";
-// 	size_t	len = 3;
+// 	char big[] = "see FF your FF return FF now FF";
+// 	char little[] = "FF";
+// 	size_t	len = ft_strlen(big);
 
 // 	printf("%d\n", ft_strnstr(big, little, len));
 // }
