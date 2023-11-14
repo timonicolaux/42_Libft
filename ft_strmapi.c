@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:36:32 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 11:27:34 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:07:19 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str = malloc(sizeof(char) * (length + 1));
 	if (!str)
 		return (NULL);
-	while (str[i])
+	while (s[i])
 	{
 		str[i] = f(i, s[i]);
 		i++;

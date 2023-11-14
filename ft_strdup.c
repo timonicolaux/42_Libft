@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:48:39 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 17:43:52 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:54:14 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strdup(const char *s)
 	int		i;
 	int		size;
 
-	if (!s)
-		return (NULL);
 	size = ft_strlen(s);
 	i = 0;
 	str = malloc(sizeof(char) * (size + 1));

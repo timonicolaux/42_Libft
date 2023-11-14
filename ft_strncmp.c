@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:18:45 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 09:46:24 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/14 08:18:51 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*cs1;
 	unsigned char	*cs2;
 

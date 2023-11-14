@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:18:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 14:54:33 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:05:51 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,26 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
 	unsigned char	*csrc;
 	unsigned char	*cdest;
 
-	i = 0;
-	if (!src && !dest)
-		return (NULL);
-	csrc = (unsigned char *)src;
-	cdest = (unsigned char *)dest;
-	if (csrc < cdest)
+	if (src == dest || n == 0)
+		return (dest);
+	if (dest < src)
 	{
-		while (i < n)
-		{
-			cdest[n - i] = csrc[n - i];
-			i++;
-		}
+		csrc = (unsigned char *)src;
+		cdest = (unsigned char *)dest;
+		while (n--)
+			*cdest++ = *csrc++;
 	}
 	else
 	{
-		while (n > 0)
-		{
-			cdest[n] = csrc[n];
-			n--;
-		}
+		csrc = (unsigned char *)src + (n - 1);
+		cdest = (unsigned char *)dest + (n - 1);
+		while (n--)
+			*cdest-- = *csrc--;
 	}
-	return (cdest);
+	return (dest);
 }
 
 // void	*ft_memmove(void *dest, const void *src, size_t n)
@@ -68,7 +62,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 // int main()
 // {
-//     const char    src[] = "thi\xffs i\xfas \0a g\xde\xadood \0nyan\0cat\0 !\r\n";
+//     const char    src[] = "test";
 //     char    dest[] = "";
 
 //     printf("Avant memmove dest = %s\n", dest);

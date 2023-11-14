@@ -6,77 +6,39 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:56:01 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 10:49:04 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:58:29 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	remove_check(char const *set, char const c)
-{
-	size_t	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (c == set[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	remove_size(char const *s1, char const *set)
-{
-	size_t	i;
-	size_t	size;
-
-	i = 0;
-	size = 0;
-	while (s1[i])
-	{
-		if (remove_check(set, s1[i]) == 0)
-			size++;
-		i++;
-	}
-	return (size);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	size;
-	size_t	i;
-	size_t	j;
+	int		start;
+	int		end;
 	char	*result;
 
-	size = 0;
-	i = 0;
-	j = 0;
+	start = 0;
 	if (!s1)
 		return (NULL);
 	if (!set)
 		return (ft_strdup(s1));
-	size = remove_size(s1, set);
-	result = malloc(sizeof(char) * (size + 1));
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strrchr(set, s1[start]))
+		start++;
+	while (s1[end - 1] && ft_strrchr(set, s1[end - 1]) && end > start)
+		end--;
+	result = malloc(sizeof(char) * (end - start + 1));
 	if (!result)
 		return (NULL);
-	while (s1[i])
-	{
-		if (remove_check(set, s1[i]) == 0)
-		{
-			result[j] = s1[i];
-			j++;
-		}
-		i++;
-	}
-	result[j] = '\0';
+	ft_strlcpy(result, &s1[start], end - start + 1);
 	return (result);
 }
 
 // int	main()
 // {
-// 	char	str1[] = "banyyanua test";
-// 	char	str2[] = "";
+// 	char	str1[] = " banyyanua ";
+// 	char	str2[] = " ";
 
 // 	printf("%s\n", ft_strtrim(str1, str2));
 // }

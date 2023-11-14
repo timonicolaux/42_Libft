@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 15:54:24 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:48:32 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	calculate_total_size(char const *s, char c)
 {
-	size_t	i;
-	size_t	count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -30,25 +30,36 @@ int	calculate_total_size(char const *s, char c)
 	return (count);
 }
 
-int	calculate_individual_size(char const *s, size_t i, char c)
+int	calculate_individual_size(char const *s, int i, char c)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
-	while (s[i] != c && s[i])
+	if (i == 0)
 	{
-		i--;
-		count++;
+		while (s[i] != c && s[i])
+		{
+			i++;
+			count++;
+		}
+	}
+	else
+	{
+		while (s[i] != c && s[i])
+		{
+			i--;
+			count++;
+		}
 	}
 	return (count);
 }
 
 void	fill_values(char *individual_str, const char *s,
-size_t end_index, char c)
+int end_index, char c)
 {
-	size_t	start_index;
-	size_t	i;
-	size_t	length;
+	int	start_index;
+	int	i;
+	int	length;
 
 	length = calculate_individual_size(s, (end_index - 1), c);
 	start_index = end_index - length;
@@ -65,24 +76,28 @@ size_t end_index, char c)
 		start_index++;
 		i++;
 	}
+	individual_str[i] = '\0';
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	individual_size;
+	int	i;
+	int	j;
+	int	total_size;
+	int	individual_size;
 	char	**array;
 
 	i = 0;
 	j = 0;
+	printf("total size : %d\n", (calculate_total_size(s, c) + 1));
+
 	array = malloc(sizeof(char *) * (calculate_total_size(s, c) + 1));
 	if (!array)
 		return (NULL);
-	array[(calculate_total_size(s, c) + 1)] = NULL;
 	while (s[i])
 	{
-		individual_size = calculate_individual_size(s, (i - 1), c);
+		individual_size = calculate_individual_size(s, i, c);
+		printf("individual size : %d\n", calculate_individual_size(s, (i - 1), c));
 		if ((s[i] == c || s[i + 1] == '\0') && individual_size != 0)
 		{
 			array[j] = malloc(sizeof(char) * (individual_size + 1));
@@ -93,23 +108,24 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
+	array[j] = '\0';
 	return (array);
 }
 
-// int	main()
-// {
-// 	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
-// 	// char	str[] = "**decouper**cette*phrase**";
-// 	char	str[] = "      split       this for   me  !       ";
-// 	char	c = ' ';
-// 	char	**result;
-// 	size_t	i;
+int	main()
+{
+	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
+	// char	str[] = "**decouper**cette*phrase**";
+	char	str[] = "hello!";
+	char	c = ' ';
+	char	**result;
+	int	i;
 
-// 	i = 0;
-// 	result = ft_split(str, c);
-// 	while (result[i])
-// 	{
-// 		printf("%s\n", result[i]);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	result = ft_split(str, c);
+	while (result[i])
+	{
+		printf("%s\n", result[i]);
+		i++;
+	}
+}
