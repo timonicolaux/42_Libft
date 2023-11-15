@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timonicolaux <timonicolaux@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/15 15:48:25 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:43:16 by timonicolau      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	calisize(char const *s, int i, char c, int first)
 	count = 0;
 	if (first == 1)
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
-		while (s[i] != c)
+		while (s[i] && s[i] != c)
 		{
 			count++;
 			i++;
@@ -59,7 +59,7 @@ int	calisize(char const *s, int i, char c, int first)
 			count++;
 		}
 	}
-	// printf("individual size: %d\n", count);
+	// printf("indiv size : %d\n", count);
 	return (count);
 }
 
@@ -82,7 +82,7 @@ int start_index, char c)
 		start_index++;
 		i++;
 	}
-	individual_str[i] = '\0';
+	individual_str[i] = 0;
 	return (individual_str);
 }
 
@@ -94,13 +94,13 @@ char	*fill_first_value(char *individual_str, const char *s, char c)
 
 	i = 0;
 	j = 0;
-	length = calisize(s, 0, c, 1) + 1;
+	length = calisize(s, 0, c, 1);
 	individual_str = malloc(sizeof(char) * (length + 1));
 	if (!individual_str)
 		return (NULL);
-	while (s[i] == c)
-			i++;
-	while (s[i] != c)
+	while (s[i] && s[i] == c)
+		i++;
+	while (s[i] && s[i] != c)
 	{
 		individual_str[j] = s[i];
 		j++;
@@ -119,19 +119,20 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	array = malloc(sizeof(char *) * (caltsize(s, c) + 1));
-	// printf("total size: %d\n", caltsize(s, c));
+	// printf("total size : %d\n", caltsize(s, c));
 	if (!array)
 		return (NULL);
 	while (s[i])
 	{
+		if (i == 0)
+		{
+			array[j] = fill_first_value(array[j], s, c);
+			j++;
+			break;
+		}
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
 		{
 			array[j] = fill_values(array[j], s, i + 1, c);
-			j++;
-		}
-		if (s[i] != c && i == 0)
-		{
-			array[j] = fill_first_value(array[j], s, c);
 			j++;
 		}
 		i++;
@@ -144,9 +145,9 @@ char	**ft_split(char const *s, char c)
 // {
 // 	// char	str[] = "il*faut*decouper*cette*phrase"; /*OK*/
 // 	// char	str[] = "**decouper**cette*phrase**";
-// 	// const char	str[] = "  tripouille  42  ";
-// 	char str[] = "split  ||this|for|me|||||!|";
-// 	char	c = '|';
+// 	const char	str[] = "xxxxxxxxhello!";
+// 	// char str[] = "split  ||this|for|me|||||!|";
+// 	char	c = 'x';
 // 	char	**result;
 // 	int	i;
 
