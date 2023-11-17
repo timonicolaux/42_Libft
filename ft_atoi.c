@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timonicolaux <timonicolaux@student.42.f    +#+  +:+       +#+        */
+/*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:21:24 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/16 18:06:49 by timonicolau      ###   ########.fr       */
+/*   Updated: 2023/11/17 11:15:41 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	ft_atoi(const char *nptr)
 
 // int	main()
 // {
-// 	// const char	str[] = "-522541515154154154154154151245";
+// 	const char	str[] = "   5555551554154154154151245";
 // 	// const char	str[] = "-52";
 // 	// const char	str[] = "52";
-// 	const char	str[] = "-2147483648";
+// 	// const char	str[] = "-2147483648";
 // 	printf("my atoi : %d\n", ft_atoi(str));
 // 	printf("atoi :    %d\n", atoi(str));
 // }
