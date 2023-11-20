@@ -6,13 +6,13 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/16 13:47:37 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:58:33 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_freeall(char const **array, int j)
+static char	**ft_freeall(char **array, int j)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ char	**ft_freeall(char const **array, int j)
 	return (NULL);
 }
 
-int	array_size(char const *s, char c)
+static int	array_size(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -58,7 +58,7 @@ int	array_size(char const *s, char c)
 	return (count);
 }
 
-int	calc_size(char const *s, int start, char c, int mark)
+static int	calc_size(char const *s, int start, char c, int mark)
 {
 	int	count;
 
@@ -86,7 +86,7 @@ int	calc_size(char const *s, int start, char c, int mark)
 	return (count);
 }
 
-char	*fill_word(char *individual_str, const char *s, char c, int start)
+static char	*fill_word(char *individual_str, const char *s, char c, int start)
 {
 	int	j;
 	int	wlength;
@@ -97,7 +97,7 @@ char	*fill_word(char *individual_str, const char *s, char c, int start)
 	slength = calc_size(s, start, c, 0);
 	individual_str = malloc(sizeof(char) * (wlength + 1));
 	if (!individual_str)
-		return (-1);
+		return (NULL);
 	while (s[start] == c && start < (start + wlength + slength))
 		start++;
 	while (s[start] && s[start] != c)
@@ -130,7 +130,7 @@ char	**ft_split(char const *s, char c)
 	while (j < tlength)
 	{
 		array[j] = fill_word(array[j], s, c, index);
-		if (array[j] == -1)
+		if (array[j] == NULL)
 			return (ft_freeall(array, j));
 		index = index + calc_size(s, index, c, 1) + calc_size(s, index, c, 0);
 		j++;

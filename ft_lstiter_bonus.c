@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:11:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/20 13:15:39 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/20 08:18:57 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/20 10:33:59 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int		i;
-	char	*str;
-	char	car;
-
-	i = 0;
-	car = (char)c;
-	str = (char *)s;
-	while (str[i] && str[i] != car)
-		i++;
-	if (str[i] == car)
-		return (&str[i]);
-	else
-		return (0);
+	if (lst && f)
+	{
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
+	}
 }
-
-// int main()
-// {
-//     const char  str[] = "saucisse";
-//     int c = 'i';
-//     printf("%s\n", ft_strchr(str, c));
-//     printf("%s\n", strchr(str, c));
-// }

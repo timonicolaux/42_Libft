@@ -6,13 +6,13 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:14:51 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 16:24:12 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/20 09:17:32 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_nbr_len(int n)
+static int	ft_nbr_len(int n)
 {
 	int	count;
 

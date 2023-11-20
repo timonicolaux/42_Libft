@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:36:32 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/13 18:07:19 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:16:07 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
-// char	add_one(unsigned int i, char c)
-// {
-// 	char	c2;
-
-// 	c2 = 'a';
-// 	return (c2);
-// }
 
 // int	main()
 // {

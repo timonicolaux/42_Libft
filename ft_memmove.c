@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:18:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/14 14:05:51 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:13:54 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-// void	*ft_memmove(void *dest, const void *src, size_t n)
-// {
-// 	size_t	i;
-// 	char	*csrc;
-// 	char	*cdest;
-// 	char	*temp;
-
-// 	i = 0;
-// 	csrc = (char *)src;
-// 	cdest = (char *)dest;
-// 	while (n > i)
-// 	{
-// 		temp[i] = csrc[i];
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (n > i)
-// 	{
-// 		cdest[i] = csrc[i];
-// 		i++;
-// 	}
-// 	return (cdest);
-// }
 
 // int main()
 // {

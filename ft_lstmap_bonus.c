@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:11:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/20 13:15:39 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/20 08:24:10 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/20 13:03:15 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		i;
-	char	*str;
-	char	car;
+	t_list	*new;
+	t_list	*copy;
+	t_list	*temp;
 
-	i = 0;
-	car = (char)c;
-	str = (char *)s;
-	while (str[i] && str[i] != car)
-		i++;
-	if (str[i] == car)
-		return (&str[i]);
-	else
-		return (0);
+	if (!lst || !f)
+		return (NULL);
+	copy = NULL;
+	while (lst)
+	{
+		temp = f(lst->content);
+		new = ft_lstnew(temp);
+		if (!new)
+		{
+			ft_lstclear(&copy, del);
+			free(temp);
+		}
+		ft_lstadd_back(&copy, new);
+		lst = lst->next;
+	}
+	return (copy);
 }
-
-// int main()
-// {
-//     const char  str[] = "saucisse";
-//     int c = 'i';
-//     printf("%s\n", ft_strchr(str, c));
-//     printf("%s\n", strchr(str, c));
-// }
