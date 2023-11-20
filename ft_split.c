@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2023/11/20 12:58:33 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:44:26 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,20 +114,19 @@ char	**ft_split(char const *s, char c)
 {
 	int		j;
 	int		index;
-	int		tlength;
 	char	**array;
 
+	array = NULL;
 	j = 0;
 	index = 0;
 	if (s == 0)
 		return (NULL);
-	if (calc_size(s, index, c, 0) == ft_strlen(s))
+	if (calc_size(s, index, c, 0) == (int)ft_strlen(s))
 		return (ft_freeall(array, -1));
-	tlength = array_size(s, c);
-	array = malloc(sizeof(char *) * (tlength + 1));
+	array = malloc(sizeof(char *) * (array_size(s, c) + 1));
 	if (!array)
 		return (NULL);
-	while (j < tlength)
+	while (j < array_size(s, c))
 	{
 		array[j] = fill_word(array[j], s, c, index);
 		if (array[j] == NULL)
